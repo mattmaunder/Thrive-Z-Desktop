@@ -63,7 +63,7 @@ export function ThriveZHomePage() {
             <h1 className="font-thrive text-2xl font-medium leading-9 text-black">Hi, Matt</h1>
 
             <div
-              className="relative h-[119px] w-full overflow-hidden rounded-3xl bg-[#ff91f2] text-left"
+              className="relative h-[119px] w-full overflow-hidden rounded-3xl bg-blue text-left"
               data-node-id="90:12485"
             >
               <DecorativeBlob
@@ -76,20 +76,20 @@ export function ThriveZHomePage() {
                   onClick={() => setShowCoins((active) => !active)}
                   aria-label={showCoins ? 'Stop coin animation' : 'Start coin animation'}
                   aria-pressed={showCoins}
-                  className="flex size-12 shrink-0 cursor-pointer appearance-none items-center justify-center rounded-full border-0 bg-[#64002d] p-0 outline-none hover:bg-[#64002d] active:bg-[#64002d]"
+                  className="flex size-12 shrink-0 cursor-pointer appearance-none items-center justify-center rounded-full border-0 bg-navy p-0 outline-none hover:bg-navy active:bg-navy"
                 >
-                  <Gift className="size-6 text-[#ff91f2]" strokeWidth={2} />
+                  <Gift className="size-6 text-blue" strokeWidth={2} />
                 </button>
                 <div className="min-w-0 flex-1">
-                  <p className="text-[15px] font-semibold leading-[22.5px] text-[#64002d]">
+                  <p className="text-[15px] font-semibold leading-[22.5px] text-navy">
                     🎉 Sneakers goal reached!
                   </p>
-                  <p className="mt-0.5 flex items-center gap-1 text-sm font-medium text-[#64002d]/80">
-                    <Star className="size-3.5 shrink-0 fill-[#64002d]/80 text-[#64002d]/80" />
+                  <p className="mt-0.5 flex items-center gap-1 text-sm font-medium text-navy/80">
+                    <Star className="size-3.5 shrink-0 fill-navy/80 text-navy/80" />
                     620 points · claim 6 prizes
                   </p>
                 </div>
-                <span className="shrink-0 rounded-full bg-[#64002d] px-4 py-2 text-sm font-semibold text-[#ff91f2]">
+                <span className="shrink-0 rounded-full bg-navy px-4 py-2 text-sm font-semibold text-blue">
                   Claim
                 </span>
               </div>
