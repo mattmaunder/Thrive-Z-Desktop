@@ -225,7 +225,7 @@ export function ConsumerBankingHomePage() {
             </div>
             <TrendingUp className="size-5 text-lime" strokeWidth={2} />
           </div>
-          <p className="mt-6 font-display text-[40px] font-semibold leading-10 tracking-[-0.8px] text-white">
+          <p className="mt-6 font-display text-[40px] font-semibold leading-10 tracking-[-0.8px] text-income-amount">
             £12,450
           </p>
           <p className="mt-2 text-[13px] font-medium leading-[19.5px] text-white/85">
