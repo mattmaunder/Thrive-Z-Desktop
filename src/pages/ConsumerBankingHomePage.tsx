@@ -247,7 +247,7 @@ export function ConsumerBankingHomePage() {
 
         <div className="rounded-3xl border border-border bg-white p-[21px]" data-node-id="426:4239">
           <div className="flex size-9 items-center justify-center rounded-xl bg-black/5">
-            <PiggyBank className="size-[18px] text-black/55" strokeWidth={2} />
+            <PiggyBank className="size-[18px] bg-amber-500 text-black/55" strokeWidth={2} />
           </div>
           <p className="mt-6 font-display text-[40px] font-semibold leading-10 tracking-[-0.8px] text-navy">
             34%
