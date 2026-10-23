@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #111111;
-  --color-teal: #0f5d00;
-  --color-muted: rgba(0, 0, 0, 0.55);
-  --color-surface: #f2ffd1;
-  --color-border: rgba(0, 0, 0, 0.1);
-  --color-warning: #f5a623;
-  --color-maroon: #64002d;
-  --color-lime: #b0fe00;
-  --color-pink: #ff91f2;
-  --color-link: #850056;
-  --color-text-brand: #007be5;
-  --color-income-amount: #007be5;
+  --color-navy: #1e3a5f;
+  --color-teal: #1d6fe8;
+  --color-muted: #5b6b7c;
+  --color-surface: #ffffff;
+  --color-border: #e2e8f0;
+  --color-warning: #5b9def;
+  --color-maroon: #1d6fe8;
+  --color-lime: #dbeafe;
+  --color-pink: #dbeafe;
+  --color-link: #1d6fe8;
+  --color-text-brand: #ffffff;
+  --color-income-amount: #ffffff;
   --font-sans: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-thrive: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Oswald", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -47,52 +47,15 @@
 }
 
 @layer utilities {
-  .gradient-income {
-    background-image: linear-gradient(
-      158.44deg,
-      rgb(15, 93, 0) 3.67%,
-      rgb(10, 60, 0) 96.33%
-    );
-  }
-
-  .gradient-primary {
-    background-color: var(--color-maroon);
+  .gradient-income,
+  .gradient-primary,
+  .gradient-teal-card {
+    background-color: #1d6fe8;
+    background-image: none;
   }
 
   .gradient-login-bg {
-    background-image: linear-gradient(
-      150.45deg,
-      rgb(15, 40, 71) 0%,
-      rgb(15, 43, 75) 7.14%,
-      rgb(14, 46, 79) 14.29%,
-      rgb(14, 49, 82) 21.43%,
-      rgb(13, 52, 86) 28.57%,
-      rgb(12, 55, 90) 35.71%,
-      rgb(11, 58, 94) 42.86%,
-      rgb(10, 61, 98) 50%,
-      rgb(9, 79, 108) 57.14%,
-      rgb(7, 96, 118) 64.29%,
-      rgb(6, 115, 128) 71.43%,
-      rgb(4, 133, 138) 78.57%,
-      rgb(3, 152, 147) 85.71%,
-      rgb(1, 171, 157) 92.86%,
-      rgb(0, 191, 166) 100%
-    );
-  }
-
-  .gradient-teal-card {
-    background-image: linear-gradient(
-      90deg,
-      rgb(0, 191, 166) 0%,
-      rgb(0, 188, 163) 11.11%,
-      rgb(0, 185, 160) 22.22%,
-      rgb(0, 182, 157) 33.33%,
-      rgb(0, 179, 154) 44.44%,
-      rgb(0, 176, 151) 55.56%,
-      rgb(0, 174, 149) 66.67%,
-      rgb(0, 171, 146) 77.78%,
-      rgb(0, 168, 143) 88.89%,
-      rgb(0, 165, 140) 100%
-    );
+    background-color: #ffffff;
+    background-image: none;
   }
 }

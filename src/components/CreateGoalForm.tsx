@@ -42,7 +42,7 @@ export function CreateGoalForm({ onSubmit, onCancel }: CreateGoalFormProps) {
   }
 
   return (
-    <article className="rounded-2xl border border-[var(--color-border)] bg-white p-6">
+    <article className="rounded-none border border-[var(--color-border)] bg-white p-6">
       <h2 className="text-lg font-medium text-navy">Create New Goal</h2>
 
       <form onSubmit={handleSubmit} className="mt-4 space-y-6">

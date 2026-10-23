@@ -25,9 +25,9 @@ export const SAVINGS_GROWTH_DATA = [
 ]
 
 export const SPENDING_ALIGNMENT = [
-  { label: 'On-Track', percent: 65, color: '#b0fe00' },
-  { label: 'Goal-Neutral', percent: 25, color: '#64002d' },
-  { label: 'Worth Discussing', percent: 10, color: '#ff91f2' },
+  { label: 'On-Track', percent: 65, color: '#1d6fe8' },
+  { label: 'Goal-Neutral', percent: 25, color: '#93c5fd' },
+  { label: 'Worth Discussing', percent: 10, color: '#1e3a5f' },
 ]
 
 export const GOAL_PROGRESS: GoalProgress[] = [
@@ -49,7 +49,7 @@ export const STATUS_STYLES: Record<
   TransactionStatus,
   { badge: string; text: string }
 > = {
-  'on-track': { badge: 'bg-[#e8ffcf] text-[#0f5d00]', text: 'On-Track' },
+  'on-track': { badge: 'bg-[#dbeafe] text-[#1d4ed8]', text: 'On-Track' },
   'goal-neutral': { badge: 'bg-black/5 text-black/55', text: 'Goal-Neutral' },
-  'worth-discussing': { badge: 'bg-[#ffe0fb] text-[#850056]', text: 'Worth Discussing' },
+  'worth-discussing': { badge: 'bg-[#e8eef6] text-[#1e3a5f]', text: 'Worth Discussing' },
 }

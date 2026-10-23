@@ -80,7 +80,7 @@ export function VisionMapPage() {
         {categories.map(({ title, icon: Icon, iconBg, status, partner1, partner2 }) => (
           <article
             key={title}
-            className="rounded-2xl border border-[var(--color-border)] bg-white p-5"
+            className="rounded-none border border-[var(--color-border)] bg-white p-5"
           >
             <div className="flex gap-4">
               <div className={`flex size-12 shrink-0 items-center justify-center rounded-xl ${iconBg}`}>
@@ -107,7 +107,7 @@ export function VisionMapPage() {
         ))}
       </div>
 
-      <div className="mt-6 rounded-2xl border border-teal/20 bg-gradient-to-r from-teal/10 to-teal/5 p-6">
+      <div className="mt-6 rounded-none border border-teal/20 bg-gradient-to-r from-teal/10 to-teal/5 p-6">
         <div className="flex gap-3">
           <Heart className="mt-1 size-5 shrink-0 text-teal" />
           <div>

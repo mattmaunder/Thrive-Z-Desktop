@@ -51,8 +51,8 @@ const accounts: Account[] = [
 ]
 
 const ownerStyles: Record<OwnerTag, string> = {
-  'Partner 1': 'bg-violet-100 text-violet-700',
-  'Partner 2': 'bg-pink-100 text-pink-700',
+  'Partner 1': 'bg-blue-100 text-blue-800',
+  'Partner 2': 'bg-sky-100 text-sky-800',
   Joint: 'bg-teal/13 text-teal',
 }
 
@@ -66,7 +66,7 @@ export function AccountsPage() {
         subtitle="Securely link your accounts for automatic tracking without merging finances"
       />
 
-      <div className="gradient-teal-card mt-8 rounded-2xl p-6 text-white">
+      <div className="gradient-teal-card mt-8 rounded-none p-6 text-white">
         <div className="flex items-start justify-between">
           <div>
             <p className="text-sm text-white/80">Total Household Balance</p>
@@ -92,7 +92,7 @@ export function AccountsPage() {
         {accounts.map((account) => (
           <article
             key={`${account.bank}-${account.lastFour}`}
-            className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[var(--color-border)] bg-white p-5"
+            className="flex flex-wrap items-center justify-between gap-4 rounded-none border border-[var(--color-border)] bg-white p-5"
           >
             <div className="flex items-center gap-4">
               <div className="flex size-12 items-center justify-center rounded-xl bg-[rgba(236,236,240,0.5)]">
@@ -125,13 +125,13 @@ export function AccountsPage() {
 
       <button
         type="button"
-        className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-[var(--color-border)] py-4 text-base font-medium text-muted hover:border-teal hover:text-teal"
+        className="mt-6 flex w-full items-center justify-center gap-2 rounded-none border-2 border-dashed border-[var(--color-border)] py-4 text-base font-medium text-muted hover:border-teal hover:text-teal"
       >
         <Plus className="size-5" />
         Connect Another Account
       </button>
 
-      <div className="mt-8 rounded-2xl border border-[var(--color-border)] bg-white p-6">
+      <div className="mt-8 rounded-none border border-[var(--color-border)] bg-white p-6">
         <h2 className="text-lg font-medium text-navy">Privacy & Control</h2>
         <div className="mt-6 grid gap-6 md:grid-cols-2">
           <div className="flex gap-4">

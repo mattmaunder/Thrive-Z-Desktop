@@ -27,8 +27,8 @@ export const INITIAL_NOTIFICATIONS: Notification[] = [
     time: '2 hours ago',
     unread: true,
     icon: PiggyBank,
-    iconBg: 'bg-amber-500/10',
-    iconColor: 'text-amber-600',
+    iconBg: 'bg-blue-100',
+    iconColor: 'text-blue-700',
   },
   {
     id: '2',

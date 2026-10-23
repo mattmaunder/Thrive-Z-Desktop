@@ -91,7 +91,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="relative mt-16 overflow-hidden rounded-2xl gradient-primary p-12">
+      <section className="relative mt-16 overflow-hidden rounded-none gradient-primary p-12">
         <div className="pointer-events-none absolute -right-16 top-0 size-64 rounded-full bg-teal/20 blur-3xl" />
         <div className="pointer-events-none absolute -left-12 bottom-0 size-48 rounded-full bg-teal/10 blur-3xl" />
         <div className="relative max-w-3xl">
@@ -121,7 +121,7 @@ export function HomePage() {
         {featureCards.map(({ icon: Icon, iconBg, title, description }) => (
           <div
             key={title}
-            className="rounded-2xl border border-[var(--color-border)] bg-white p-6"
+            className="rounded-none border border-[var(--color-border)] bg-white p-6"
           >
             <div className={`mb-6 flex size-12 items-center justify-center rounded-xl ${iconBg}`}>
               <Icon className="size-6 text-teal" />
@@ -132,7 +132,7 @@ export function HomePage() {
         ))}
       </section>
 
-      <section className="mt-16 rounded-2xl border border-teal/20 bg-gradient-to-r from-teal/10 to-teal/5 p-12">
+      <section className="mt-16 rounded-none border border-teal/20 bg-gradient-to-r from-teal/10 to-teal/5 p-12">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-xl font-medium text-navy">Why Thrive Compass?</h2>
           <p className="mt-4 text-base leading-6 text-muted">
@@ -143,7 +143,7 @@ export function HomePage() {
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             {whyItems.map(({ title, description }) => (
-              <div key={title} className="rounded-xl bg-surface p-6 text-left">
+              <div key={title} className="bg-surface p-6 text-left">
                 <p className="text-base text-teal">
                   <Check className="mr-1 inline size-4" />
                   {title}

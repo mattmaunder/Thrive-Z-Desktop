@@ -48,7 +48,7 @@ export function NotificationsModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="notifications-title"
-        className="relative z-10 w-full max-w-md overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]"
+        className="relative z-10 w-full max-w-md overflow-hidden rounded-none border border-[var(--color-border)] bg-white shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]"
       >
         <div className="flex items-center justify-between border-b border-[var(--color-border)] px-6 py-4">
           <div>

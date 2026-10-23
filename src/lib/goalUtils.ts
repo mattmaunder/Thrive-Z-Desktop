@@ -23,7 +23,7 @@ export const GOAL_CATEGORIES = [
 const categoryStyles: Record<string, { color: string; progressColor: string }> = {
   Home: { color: 'bg-teal/13', progressColor: 'bg-teal' },
   Travel: { color: 'bg-navy/13', progressColor: 'bg-navy' },
-  'Safety Net': { color: 'bg-orange-500/13', progressColor: 'bg-orange-500' },
+  'Safety Net': { color: 'bg-sky-100', progressColor: 'bg-sky-400' },
   Education: { color: 'bg-teal/13', progressColor: 'bg-teal' },
   Retirement: { color: 'bg-navy/13', progressColor: 'bg-navy' },
   Other: { color: 'bg-teal/13', progressColor: 'bg-teal' },
@@ -121,7 +121,7 @@ export const INITIAL_GOALS: Goal[] = [
     target: 25000,
     monthlyRequired: '£916.67/mo',
     perPartner: '£458.33/mo',
-    color: 'bg-orange-500/13',
-    progressColor: 'bg-orange-500',
+    color: 'bg-sky-100',
+    progressColor: 'bg-sky-400',
   },
 ]

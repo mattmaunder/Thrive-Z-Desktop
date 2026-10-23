@@ -89,7 +89,7 @@ function SavingsGrowthChart() {
         ref={pathRef}
         d={linePath}
         fill="none"
-        stroke="#0a3c00"
+        stroke="#1d6fe8"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -105,8 +105,8 @@ function SavingsGrowthChart() {
           cx={p.x}
           cy={p.y}
           r="4.5"
-          fill="#b0fe00"
-          stroke="#0a3c00"
+          fill="#ffffff"
+          stroke="#1d6fe8"
           strokeWidth="1.5"
           style={{
             opacity: ready ? 1 : 0,
@@ -195,9 +195,9 @@ function SpendingDonutChart() {
 }
 
 const goalBarColors: Record<string, string> = {
-  'bg-lime': '#b0fe00',
-  'bg-maroon': '#64002d',
-  'bg-warning': '#f5a623',
+  'bg-lime': '#1d6fe8',
+  'bg-maroon': '#5b9def',
+  'bg-warning': '#93c5fd',
 }
 
 function formatAmount(amount: number) {
@@ -218,12 +218,12 @@ export function ConsumerBankingHomePage() {
       />
 
       <div className="mt-6 grid gap-4 md:grid-cols-3" data-node-id="426:4209">
-        <div className="gradient-income overflow-hidden rounded-3xl p-5" data-node-id="426:4210">
+        <div className="gradient-income overflow-hidden rounded-none p-5" data-node-id="426:4210">
           <div className="flex items-start justify-between">
-            <div className="flex size-9 items-center justify-center rounded-xl bg-[rgba(176,254,0,0.18)]">
-              <Coins className="size-[18px] text-lime" strokeWidth={2} />
+            <div className="flex size-9 items-center justify-center rounded-xl bg-white/20">
+              <Coins className="size-[18px] text-white" strokeWidth={2} />
             </div>
-            <TrendingUp className="size-5 text-lime" strokeWidth={2} />
+            <TrendingUp className="size-5 text-white" strokeWidth={2} />
           </div>
           <p className="mt-6 font-display text-[40px] font-semibold leading-10 tracking-[-0.8px] text-text-brand">
             £12,450
@@ -233,7 +233,7 @@ export function ConsumerBankingHomePage() {
           </p>
         </div>
 
-        <div className="rounded-3xl border border-border bg-white p-[21px]" data-node-id="426:4227">
+        <div className="rounded-none border border-border bg-white p-[21px]" data-node-id="426:4227">
           <div className="flex size-9 items-center justify-center rounded-xl bg-black/5">
             <TrendingDown className="size-[18px] text-black/55" strokeWidth={2} />
           </div>
@@ -245,7 +245,7 @@ export function ConsumerBankingHomePage() {
           </p>
         </div>
 
-        <div className="rounded-3xl border border-border bg-white p-[21px]" data-node-id="426:4239">
+        <div className="rounded-none border border-border bg-white p-[21px]" data-node-id="426:4239">
           <div className="flex size-9 items-center justify-center rounded-xl bg-black/5">
             <PiggyBank className="size-[18px] text-black/55" strokeWidth={2} />
           </div>
@@ -260,7 +260,7 @@ export function ConsumerBankingHomePage() {
 
       <div className="mt-4 grid gap-4 lg:grid-cols-2" data-node-id="426:4252">
         <div
-          className="min-h-[330px] rounded-3xl border border-border bg-white p-[21px]"
+          className="min-h-[330px] rounded-none border border-border bg-white p-[21px]"
           data-node-id="426:4253"
         >
           <h2 className="text-[15px] font-semibold leading-[22.5px] text-navy">Savings Growth</h2>
@@ -270,7 +270,7 @@ export function ConsumerBankingHomePage() {
         </div>
 
         <div
-          className="min-h-[330px] rounded-3xl border border-border bg-white p-[21px]"
+          className="min-h-[330px] rounded-none border border-border bg-white p-[21px]"
           data-node-id="426:4287"
         >
           <h2 className="text-[15px] font-semibold leading-[22.5px] text-navy">Spending Alignment</h2>
@@ -279,7 +279,7 @@ export function ConsumerBankingHomePage() {
       </div>
 
       <div
-        className="mt-4 rounded-3xl border border-border bg-white p-[21px]"
+        className="mt-4 rounded-none border border-border bg-white p-[21px]"
         data-node-id="426:4331"
       >
         <div className="flex items-center justify-between">
@@ -295,7 +295,7 @@ export function ConsumerBankingHomePage() {
 
         <div className="mt-4 grid gap-3 md:grid-cols-3" data-node-id="426:4341">
           {GOAL_PROGRESS.map((goal) => (
-            <div key={goal.name} className="rounded-2xl bg-black/[0.03] p-4">
+            <div key={goal.name} className="rounded-none bg-black/[0.03] p-4">
               <p className="text-[13px] font-medium leading-[19.5px] text-navy">{goal.name}</p>
               <p className="pt-0.5 text-xs leading-[18px] text-black/55">{goal.percent}% complete</p>
               <div className="mt-2 h-2 overflow-hidden rounded-full bg-black/8">
@@ -313,7 +313,7 @@ export function ConsumerBankingHomePage() {
       </div>
 
       <div
-        className="mt-4 rounded-3xl border border-border bg-white p-[21px]"
+        className="mt-4 rounded-none border border-border bg-white p-[21px]"
         data-node-id="426:4377"
       >
         <h2 className="text-[15px] font-semibold leading-[22.5px] text-navy">Recent Transactions</h2>
@@ -324,7 +324,7 @@ export function ConsumerBankingHomePage() {
             return (
               <div
                 key={`${tx.name}-${tx.date}`}
-                className={`flex items-center justify-between rounded-xl p-3 ${
+                className={`flex items-center justify-between p-3 ${
                   index % 2 === 0 ? 'bg-black/[0.02]' : ''
                 }`}
               >

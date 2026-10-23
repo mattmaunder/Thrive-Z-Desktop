@@ -12,7 +12,7 @@ export function ThriveLogo({ size = 'default' }: ThriveLogoProps) {
     <div className="flex items-center gap-2" data-node-id="90:12475">
       <ThriveMark size={markSize} className="shrink-0" />
       <span
-        className={`font-['Oswald'] font-semibold tracking-[-0.04em] text-[#64002d] ${wordSize}`}
+        className={`font-sans font-semibold tracking-[-0.04em] text-[#1d6fe8] ${wordSize}`}
       >
         thrive
       </span>

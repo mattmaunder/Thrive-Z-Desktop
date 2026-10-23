@@ -35,7 +35,7 @@ export function AppLayout() {
 
   return (
     <div className="flex min-h-screen flex-col bg-surface">
-      <header className="border-b border-border bg-white/92 backdrop-blur-sm">
+      <header className="border-b border-border bg-white">
         <div className="mx-auto flex h-16 max-w-[1160px] items-center gap-6 px-6">
           <div className="flex shrink-0 items-center gap-2">
             <ThriveLogo size="small" />
@@ -79,7 +79,7 @@ export function AppLayout() {
             >
               <Bell className="size-[17px] text-black/55" />
               {unreadCount > 0 && (
-                <span className="absolute right-1.5 top-1.5 size-2 rounded-full bg-lime" />
+                <span className="absolute right-1.5 top-1.5 size-2 rounded-full bg-teal" />
               )}
             </button>
             <div className="flex items-center gap-2 rounded-full border border-border py-1.5 pl-3.5 pr-2.5">

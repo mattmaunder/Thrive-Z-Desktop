@@ -12,7 +12,7 @@ function GoalCard({ goal }: { goal: Goal }) {
   const percent = goal.target > 0 ? ((goal.saved / goal.target) * 100).toFixed(1) : '0.0'
 
   return (
-    <article className="rounded-2xl border border-[var(--color-border)] bg-white p-6">
+    <article className="rounded-none border border-[var(--color-border)] bg-white p-6">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className={`flex size-9 items-center justify-center rounded-xl ${goal.color}`}>

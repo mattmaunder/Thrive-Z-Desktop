@@ -16,13 +16,8 @@ export function LoginPage() {
 
   return (
     <div className="gradient-login-bg relative flex min-h-screen items-center justify-center px-4 py-12">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/4 top-1/4 size-96 rounded-full bg-teal/10 blur-3xl" />
-        <div className="absolute right-1/4 top-1/2 size-96 rounded-full bg-navy/20 blur-3xl" />
-      </div>
-
       <div className="relative w-full max-w-md">
-        <div className="rounded-2xl border border-[var(--color-border)] bg-white p-8 shadow-[0_25px_25px_rgba(0,0,0,0.25)]">
+        <div className="rounded-none border border-[var(--color-border)] bg-white p-8 shadow-[0_25px_25px_rgba(0,0,0,0.25)]">
           <div className="flex flex-col items-center text-center">
             <img src={THRIVE_LOGO} alt="Thrive Bank" className="h-12 w-auto" />
             <h1 className="mt-4 text-2xl font-medium text-navy">Welcome to Thrive Compass</h1>

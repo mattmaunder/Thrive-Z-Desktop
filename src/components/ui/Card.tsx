@@ -12,7 +12,7 @@ type CardProps = {
 
 export function Card({ title, body, children }: CardProps) {
   return (
-    <div className="rounded-2xl border border-[var(--color-border)] bg-white p-6">
+    <div className="rounded-none border border-[var(--color-border)] bg-white p-6">
       <h2 className="text-lg font-medium text-navy">{title}</h2>
       {body ? <p className="mt-2 text-sm text-muted">{body}</p> : null}
       {children}
@@ -40,7 +40,7 @@ export function GoalSummaryCard({
   statusLabel = 'On track',
 }: GoalSummaryCardProps) {
   return (
-    <div className="rounded-2xl border border-[var(--color-border)] bg-white p-6">
+    <div className="rounded-none border border-[var(--color-border)] bg-white p-6">
       <div className="flex items-start justify-between">
         <div className="rounded-xl bg-teal/10 p-2.5">
           <Icon className="size-5 text-teal" />
@@ -76,7 +76,7 @@ export function ActionCard({
   onAction,
 }: ActionCardProps) {
   return (
-    <div className="flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-white p-6">
+    <div className="flex h-full flex-col rounded-none border border-[var(--color-border)] bg-white p-6">
       <div className="flex items-center gap-3 pb-3">
         <div className="gradient-primary flex size-9 items-center justify-center rounded-full text-sm text-white">
           {avatar}
@@ -115,7 +115,7 @@ export function ChartCard({
   onAction,
 }: ChartCardProps) {
   return (
-    <div className="flex h-full flex-col justify-between rounded-2xl bg-navy p-6 text-white">
+    <div className="flex h-full flex-col justify-between rounded-none bg-navy p-6 text-white">
       <div>
         <p className="text-xs text-white/60">{label}</p>
         <h3 className="mt-1 text-lg font-medium">{title}</h3>

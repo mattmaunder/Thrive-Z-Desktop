@@ -39,7 +39,7 @@ export function Alert({ variant, title, children }: AlertProps) {
   const { icon: Icon, container, iconColor } = variantConfig[variant]
 
   return (
-    <div className={`flex gap-3 rounded-2xl p-4 ${container}`}>
+    <div className={`flex gap-3 rounded-none p-4 ${container}`}>
       <Icon className={`mt-0.5 size-5 shrink-0 ${iconColor}`} />
       <div>
         <p className="text-sm text-navy">{title}</p>

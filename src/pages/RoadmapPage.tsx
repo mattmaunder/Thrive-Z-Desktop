@@ -91,7 +91,7 @@ function StatusBadge({ status }: { status: RoadmapGoal['status'] }) {
 
 function GoalCard({ goal }: { goal: RoadmapGoal }) {
   return (
-    <article className="flex-1 rounded-2xl border border-[var(--color-border)] bg-white p-6">
+    <article className="flex-1 rounded-none border border-[var(--color-border)] bg-white p-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h3 className="text-lg font-medium text-navy">{goal.title}</h3>
@@ -136,7 +136,7 @@ export function RoadmapPage() {
         </p>
       </div>
 
-      <div className="gradient-primary mt-8 rounded-2xl p-6 text-white">
+      <div className="gradient-primary mt-8 rounded-none p-6 text-white">
         <div className="flex flex-wrap items-start justify-between gap-6">
           <div>
             <p className="text-sm text-white/80">Total Monthly Savings Required</p>
@@ -175,7 +175,7 @@ export function RoadmapPage() {
         </div>
       </div>
 
-      <div className="mt-8 rounded-2xl border border-[var(--color-border)] bg-white p-8 text-center">
+      <div className="mt-8 rounded-none border border-[var(--color-border)] bg-white p-8 text-center">
         <h2 className="text-lg font-medium text-navy">Adjust Your Plan</h2>
         <p className="mx-auto mt-2 max-w-xl text-sm text-muted">
           Life changes, and so should your plan. Thrive Compass automatically recalculates your
