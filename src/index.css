@@ -1,21 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #1e3a5f;
-  --color-teal: #1d6fe8;
-  --color-muted: #5b6b7c;
-  --color-surface: #ffffff;
-  --color-border: #e2e8f0;
-  --color-warning: #5b9def;
-  --color-maroon: #1d6fe8;
-  --color-lime: #dbeafe;
-  --color-pink: #dbeafe;
-  --color-link: #1d6fe8;
+  --color-navy: #64002d;
+  --color-teal: #00c9d8;
+  --color-muted: #6d666a;
+  --color-surface: #ebebeb;
+  --color-border: #d7d2d4;
+  --color-warning: #ff6def;
+  --color-maroon: #64002d;
+  --color-lime: #c4ff55;
+  --color-pink: #ff91f2;
+  --color-link: #9a0062;
   --color-text-brand: #ffffff;
   --color-income-amount: #ffffff;
   --font-sans: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-thrive: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "DM Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Oswald", "Arial Narrow", sans-serif;
 }
 
 @layer base {
@@ -50,7 +51,7 @@
   .gradient-income,
   .gradient-primary,
   .gradient-teal-card {
-    background-color: #1d6fe8;
+    background-color: var(--color-maroon);
     background-image: none;
   }
 

@@ -12,6 +12,8 @@ export type GoalProgress = {
   percent: number
   color: string
   icon: 'home' | 'plane' | 'piggy-bank'
+  saved: string
+  target: string
 }
 
 export const SAVINGS_GROWTH_DATA = [
@@ -25,15 +27,15 @@ export const SAVINGS_GROWTH_DATA = [
 ]
 
 export const SPENDING_ALIGNMENT = [
-  { label: 'On-Track', percent: 65, color: '#1d6fe8' },
-  { label: 'Goal-Neutral', percent: 25, color: '#93c5fd' },
-  { label: 'Worth Discussing', percent: 10, color: '#1e3a5f' },
+  { label: 'On-Track', percent: 65, color: '#9a0062' },
+  { label: 'Goal-Neutral', percent: 25, color: '#ff6def' },
+  { label: 'Worth Discussing', percent: 10, color: '#64002d' },
 ]
 
 export const GOAL_PROGRESS: GoalProgress[] = [
-  { name: 'House Down Payment', percent: 15, color: 'bg-lime', icon: 'home' },
-  { name: 'European Honeymoon', percent: 30, color: 'bg-maroon', icon: 'plane' },
-  { name: 'Emergency Fund', percent: 34, color: 'bg-warning', icon: 'piggy-bank' },
+  { name: 'House Down Payment', percent: 15, color: 'bg-pink', icon: 'home', saved: '£12,000', target: '£80,000' },
+  { name: 'European Honeymoon', percent: 30, color: 'bg-warning', icon: 'plane', saved: '£2,400', target: '£8,000' },
+  { name: 'Emergency Fund', percent: 34, color: 'bg-lime', icon: 'piggy-bank', saved: '£8,500', target: '£25,000' },
 ]
 
 export const RECENT_TRANSACTIONS: Transaction[] = [
@@ -49,7 +51,7 @@ export const STATUS_STYLES: Record<
   TransactionStatus,
   { badge: string; text: string }
 > = {
-  'on-track': { badge: 'bg-[#dbeafe] text-[#1d4ed8]', text: 'On-Track' },
-  'goal-neutral': { badge: 'bg-black/5 text-black/55', text: 'Goal-Neutral' },
-  'worth-discussing': { badge: 'bg-[#e8eef6] text-[#1e3a5f]', text: 'Worth Discussing' },
+  'on-track': { badge: 'bg-lime text-maroon', text: 'On-Track' },
+  'goal-neutral': { badge: 'bg-teal text-maroon', text: 'Goal-Neutral' },
+  'worth-discussing': { badge: 'bg-warning text-maroon', text: 'Worth Discussing' },
 }

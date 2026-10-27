@@ -1,13 +1,15 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   ChevronRight,
   Coins,
+  House,
+  Plane,
   PiggyBank,
   TrendingDown,
   TrendingUp,
 } from 'lucide-react'
 import { PageHeader } from '../components/PageHeader'
+import { Button } from '../components/ui'
 import {
   GOAL_PROGRESS,
   RECENT_TRANSACTIONS,
@@ -16,28 +18,7 @@ import {
   STATUS_STYLES,
 } from '../lib/dashboardData'
 
-function useChartReady() {
-  const [ready, setReady] = useState(false)
-
-  useEffect(() => {
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reducedMotion) {
-      setReady(true)
-      return
-    }
-
-    const frame = requestAnimationFrame(() => setReady(true))
-    return () => cancelAnimationFrame(frame)
-  }, [])
-
-  return ready
-}
-
 function SavingsGrowthChart() {
-  const ready = useChartReady()
-  const pathRef = useRef<SVGPathElement>(null)
-  const [pathLength, setPathLength] = useState(0)
-
   const max = 30000
   const width = 506
   const height = 253
@@ -53,12 +34,6 @@ function SavingsGrowthChart() {
 
   const linePath = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ')
   const yLabels = [30000, 22500, 15000, 7500]
-
-  useLayoutEffect(() => {
-    if (pathRef.current) {
-      setPathLength(pathRef.current.getTotalLength())
-    }
-  }, [linePath])
 
   return (
     <svg viewBox={`0 0 ${width} ${height}`} className="h-full w-full" aria-hidden>
@@ -86,32 +61,22 @@ function SavingsGrowthChart() {
         )
       })}
       <path
-        ref={pathRef}
         d={linePath}
         fill="none"
-        stroke="#1d6fe8"
+        stroke="#9a0062"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        style={{
-          strokeDasharray: pathLength || undefined,
-          strokeDashoffset: ready ? 0 : pathLength,
-          transition: ready ? 'stroke-dashoffset 1.2s ease-out' : 'none',
-        }}
       />
-      {points.map((p, i) => (
+      {points.map((p) => (
         <circle
           key={p.month}
           cx={p.x}
           cy={p.y}
           r="4.5"
           fill="#ffffff"
-          stroke="#1d6fe8"
+          stroke="#9a0062"
           strokeWidth="1.5"
-          style={{
-            opacity: ready ? 1 : 0,
-            transition: ready ? `opacity 0.25s ease-out ${0.75 + i * 0.08}s` : 'none',
-          }}
         />
       ))}
       {points.map((p) => (
@@ -130,23 +95,22 @@ function SavingsGrowthChart() {
 }
 
 function SpendingDonutChart() {
-  const ready = useChartReady()
   const size = 150
   const strokeWidth = 24
   const radius = (size - strokeWidth) / 2
   const center = size / 2
   const circumference = 2 * Math.PI * radius
 
-  let cumulativeOffset = 0
-
   return (
     <>
       <div className="flex h-[162px] items-start justify-center pt-3">
         <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} aria-hidden>
-          {SPENDING_ALIGNMENT.map((segment, i) => {
+          {SPENDING_ALIGNMENT.map((segment, index) => {
             const segmentLength = (segment.percent / 100) * circumference
-            const offset = cumulativeOffset
-            cumulativeOffset += segmentLength
+            const offset = SPENDING_ALIGNMENT.slice(0, index).reduce(
+              (total, item) => total + (item.percent / 100) * circumference,
+              0,
+            )
 
             return (
               <circle
@@ -157,34 +121,24 @@ function SpendingDonutChart() {
                 fill="none"
                 stroke={segment.color}
                 strokeWidth={strokeWidth}
-                strokeDasharray={`${ready ? segmentLength : 0} ${circumference}`}
+                strokeDasharray={`${segmentLength} ${circumference}`}
                 strokeDashoffset={-offset}
                 transform={`rotate(-90 ${center} ${center})`}
-                style={{
-                  transition: ready ? `stroke-dasharray 0.7s ease-out ${i * 0.2}s` : 'none',
-                }}
               />
             )
           })}
         </svg>
       </div>
       <div className="flex h-[65px] justify-center gap-6 pt-4">
-        {SPENDING_ALIGNMENT.map((segment, i) => (
-          <div
-            key={segment.label}
-            className="text-center"
-            style={{
-              opacity: ready ? 1 : 0,
-              transform: ready ? 'translateY(0)' : 'translateY(6px)',
-              transition: ready
-                ? `opacity 0.4s ease-out ${0.5 + i * 0.12}s, transform 0.4s ease-out ${0.5 + i * 0.12}s`
-                : 'none',
-            }}
-          >
-            <div
-              className="mx-auto size-2.5 rounded-full"
-              style={{ backgroundColor: segment.color }}
-            />
+        {SPENDING_ALIGNMENT.map((segment) => (
+          <div key={segment.label} className="text-center">
+            <div className={`mx-auto size-2.5 rounded-full ${
+              segment.label === 'On-Track'
+                ? 'bg-link'
+                : segment.label === 'Goal-Neutral'
+                  ? 'bg-warning'
+                  : 'bg-maroon'
+            }`} />
             <p className="pt-1 text-[11px] font-medium leading-[16.5px] text-black/55">{segment.label}</p>
             <p className="text-[12px] font-semibold leading-[18px] text-navy">{segment.percent}%</p>
           </div>
@@ -194,10 +148,22 @@ function SpendingDonutChart() {
   )
 }
 
-const goalBarColors: Record<string, string> = {
-  'bg-lime': '#1d6fe8',
-  'bg-maroon': '#5b9def',
-  'bg-warning': '#93c5fd',
+const goalBarClasses: Record<string, string> = {
+  'bg-pink': 'bg-pink',
+  'bg-warning': 'bg-warning',
+  'bg-lime': 'bg-lime',
+}
+
+const goalIconClasses: Record<string, string> = {
+  'bg-pink': 'bg-pink/50',
+  'bg-warning': 'bg-warning/35',
+  'bg-lime': 'bg-lime',
+}
+
+const goalWidthClasses: Record<number, string> = {
+  15: 'w-[15%]',
+  30: 'w-[30%]',
+  34: 'w-[34%]',
 }
 
 function formatAmount(amount: number) {
@@ -211,21 +177,21 @@ function formatAmount(amount: number) {
 
 export function ConsumerBankingHomePage() {
   return (
-    <div className="mx-auto max-w-[1160px] px-6 py-8" data-node-id="426:1732">
+    <div className="mx-auto max-w-[1160px] px-4 py-8 sm:px-8" data-node-id="426:1732">
       <PageHeader
         title="Household Dashboard"
         subtitle="Your combined financial snapshot for 28/04/26"
       />
 
       <div className="mt-6 grid gap-4 md:grid-cols-3" data-node-id="426:4209">
-        <div className="gradient-income overflow-hidden rounded-none p-5" data-node-id="426:4210">
+        <div className="gradient-income min-h-48 overflow-hidden rounded-3xl p-6" data-node-id="426:4210">
           <div className="flex items-start justify-between">
             <div className="flex size-9 items-center justify-center rounded-xl bg-white/20">
               <Coins className="size-[18px] text-white" strokeWidth={2} />
             </div>
             <TrendingUp className="size-5 text-white" strokeWidth={2} />
           </div>
-          <p className="mt-6 font-display text-[40px] font-semibold leading-10 tracking-[-0.8px] text-text-brand">
+          <p className="mt-10 font-display text-[40px] font-semibold leading-10 tracking-[-0.8px] text-text-brand">
             £12,450
           </p>
           <p className="mt-2 text-[13px] font-medium leading-[19.5px] text-white/85">
@@ -233,11 +199,11 @@ export function ConsumerBankingHomePage() {
           </p>
         </div>
 
-        <div className="rounded-none border border-border bg-white p-[21px]" data-node-id="426:4227">
-          <div className="flex size-9 items-center justify-center rounded-xl bg-black/5">
-            <TrendingDown className="size-[18px] text-black/55" strokeWidth={2} />
+        <div className="min-h-48 rounded-3xl bg-white p-6" data-node-id="426:4227">
+          <div className="flex size-9 items-center justify-center rounded-xl bg-pink/15">
+            <TrendingDown className="size-[18px] text-maroon" strokeWidth={2} />
           </div>
-          <p className="mt-6 font-display text-[40px] font-semibold leading-10 tracking-[-0.8px] text-navy">
+          <p className="mt-10 font-display text-[40px] font-semibold leading-10 tracking-[-0.8px] text-navy">
             £8,234
           </p>
           <p className="mt-2 text-[13px] font-medium leading-[19.5px] text-black/55">
@@ -245,11 +211,11 @@ export function ConsumerBankingHomePage() {
           </p>
         </div>
 
-        <div className="rounded-none border border-border bg-white p-[21px]" data-node-id="426:4239">
-          <div className="flex size-9 items-center justify-center rounded-xl bg-black/5">
-            <PiggyBank className="size-[18px] text-black/55" strokeWidth={2} />
+        <div className="min-h-48 rounded-3xl bg-white p-6" data-node-id="426:4239">
+          <div className="flex size-9 items-center justify-center rounded-xl bg-pink/15">
+            <PiggyBank className="size-[18px] text-maroon" strokeWidth={2} />
           </div>
-          <p className="mt-6 font-display text-[40px] font-semibold leading-10 tracking-[-0.8px] text-navy">
+          <p className="mt-10 font-display text-[40px] font-semibold leading-10 tracking-[-0.8px] text-navy">
             34%
           </p>
           <p className="mt-2 text-[13px] font-medium leading-[19.5px] text-black/55">
@@ -260,7 +226,7 @@ export function ConsumerBankingHomePage() {
 
       <div className="mt-4 grid gap-4 lg:grid-cols-2" data-node-id="426:4252">
         <div
-          className="min-h-[330px] rounded-none border border-border bg-white p-[21px]"
+          className="min-h-[330px] rounded-3xl bg-white p-4"
           data-node-id="426:4253"
         >
           <h2 className="text-[15px] font-semibold leading-[22.5px] text-navy">Savings Growth</h2>
@@ -270,7 +236,7 @@ export function ConsumerBankingHomePage() {
         </div>
 
         <div
-          className="min-h-[330px] rounded-none border border-border bg-white p-[21px]"
+          className="min-h-[330px] rounded-3xl bg-white p-4"
           data-node-id="426:4287"
         >
           <h2 className="text-[15px] font-semibold leading-[22.5px] text-navy">Spending Alignment</h2>
@@ -279,7 +245,7 @@ export function ConsumerBankingHomePage() {
       </div>
 
       <div
-        className="mt-4 rounded-none border border-border bg-white p-[21px]"
+        className="mt-6 rounded-3xl bg-white p-4"
         data-node-id="426:4331"
       >
         <div className="flex items-center justify-between">
@@ -295,17 +261,24 @@ export function ConsumerBankingHomePage() {
 
         <div className="mt-4 grid gap-3 md:grid-cols-3" data-node-id="426:4341">
           {GOAL_PROGRESS.map((goal) => (
-            <div key={goal.name} className="rounded-none bg-black/[0.03] p-4">
-              <p className="text-[13px] font-medium leading-[19.5px] text-navy">{goal.name}</p>
-              <p className="pt-0.5 text-xs leading-[18px] text-black/55">{goal.percent}% complete</p>
-              <div className="mt-2 h-2 overflow-hidden rounded-full bg-black/8">
-                <div
-                  className="h-full rounded-full"
-                  style={{
-                    width: `${goal.percent}%`,
-                    backgroundColor: goalBarColors[goal.color],
-                  }}
-                />
+            <div key={goal.name} className="flex items-center gap-3 rounded-3xl border border-border p-3">
+              <div className={`flex size-14 shrink-0 items-center justify-center rounded-xl ${goalIconClasses[goal.color]}`}>
+                {goal.icon === 'home' && <House className="size-7 text-maroon" />}
+                {goal.icon === 'plane' && <Plane className="size-7 text-maroon" />}
+                {goal.icon === 'piggy-bank' && <PiggyBank className="size-7 text-maroon" />}
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center justify-between gap-2">
+                  <p className="truncate text-sm font-medium text-maroon">{goal.name}</p>
+                  <p className="text-sm font-medium text-maroon">{goal.target}</p>
+                </div>
+                <div className="mt-1 h-2 overflow-hidden rounded-full bg-black/10">
+                  <div className={`h-full rounded-full ${goalBarClasses[goal.color]} ${goalWidthClasses[goal.percent]}`} />
+                </div>
+                <div className="mt-1 flex justify-between text-xs text-black/55">
+                  <span>{goal.saved}</span>
+                  <span>{`£${(Number(goal.target.replace(/[£,]/g, '')) - Number(goal.saved.replace(/[£,]/g, ''))).toLocaleString('en-GB')}`}</span>
+                </div>
               </div>
             </div>
           ))}
@@ -313,7 +286,7 @@ export function ConsumerBankingHomePage() {
       </div>
 
       <div
-        className="mt-4 rounded-none border border-border bg-white p-[21px]"
+        className="mt-6 rounded-3xl bg-white p-4"
         data-node-id="426:4377"
       >
         <h2 className="text-[15px] font-semibold leading-[22.5px] text-navy">Recent Transactions</h2>
@@ -325,7 +298,7 @@ export function ConsumerBankingHomePage() {
               <div
                 key={`${tx.name}-${tx.date}`}
                 className={`flex items-center justify-between p-3 ${
-                  index % 2 === 0 ? 'bg-black/[0.02]' : ''
+                  index % 2 === 0 ? 'bg-pink/15' : ''
                 }`}
               >
                 <div>
@@ -350,6 +323,15 @@ export function ConsumerBankingHomePage() {
             )
           })}
         </div>
+      </div>
+
+      <div className="mt-6 flex justify-center gap-2">
+        <Button className="min-w-44 rounded-3xl bg-maroon text-white hover:bg-maroon/90">
+          Add Transaction
+        </Button>
+        <Button variant="ghost" className="min-w-40 rounded-3xl border-maroon bg-transparent text-maroon hover:bg-white/50">
+          View Reports
+        </Button>
       </div>
     </div>
   )
